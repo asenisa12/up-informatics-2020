@@ -2,12 +2,12 @@
 using namespace std;
 
 //zad0
-void input_2d_array(int arr[3][3])
+void input_2d_array(int arr[5][5])
 {
 
-    for(int y=0; y<3; y++)
+    for(int y=0; y<5; y++)
     {
-        for(int x = 0; x<3; x++)
+        for(int x = 0; x<5; x++)
         {
             cout<< "insert elem at x:" << x << " y:" << y<< " - ";
             cin>>arr[y][x];
@@ -15,11 +15,11 @@ void input_2d_array(int arr[3][3])
     }
 }
 //zad1
-void print_2d_array(int arr[3][3])
+void print_2d_array(int arr[5][5])
 {
-    for(int y = 0; y < 3; y++)
+    for(int y = 0; y < 5; y++)
     {
-        for(int x = 0; x < 3; x++)
+        for(int x = 0; x < 5; x++)
         {
             cout<<"[" << x << "]["<<y<<"]=" << arr[y][x] <<" ";
         }
@@ -192,6 +192,25 @@ void print_max_col_sum(int arr[5][5])
     cout<< col_index <<" sum is " <<max_sum <<endl;
 }
 
+//zad6
+void remove_col(int arr[5][5], int k)
+{
+
+    for(int x = k; x < 4; x++)
+    {
+        for(int y = 0; y < 5; y++)
+        {
+            arr[y][x] = arr[y][x + 1];
+        }
+    }
+
+    for(int y = 0; y < 5; y++)
+    {
+        arr[y][4] = 0;
+    }
+}
+
+
 int main()
 {
     int arr1[3][3];
@@ -220,5 +239,10 @@ int main()
 
     print_max_row_sum(arr2);
     print_max_col_sum(arr2);
+
+
+    remove_col(arr2, 2);
+    print_2d_array(arr2);
+
     return 0;
 }

@@ -3,6 +3,73 @@
 <br />
 
 
+
+#### **Пойнтери и динамична памет**
+```cpp
+#include <iostream>
+using namespace std;
+
+void test_func(int *&p)
+{
+    static int num = 6;
+    num++;
+    cout<<num<<endl;
+    p = &num;
+
+}
+
+int main()
+{
+    int *p;
+    int a = 34;
+
+    p = &a;
+    cout<<p<<endl;
+    (*p)++;
+    cout<<*p<<endl;
+
+    int arr[5] = {1,2,3,4,5};
+    
+    cout<<arr<<endl;
+    int *arr_ptr = arr;
+    
+    //*(arr+4) == arr[4]
+    cout<<*(arr+4)<<endl;
+
+    int *const ptr_test2 = &min_elem;
+    //ptr_test2 = &max_elem; //error
+    const int *ptr_test3;
+    ptr_test3 = &min_elem;
+    ptr_test3 = &max_elem;
+    //(*ptr_test3)++; //error
+
+
+    int *ptr_test;
+    test_func(ptr_test);
+    test_func(ptr_test);
+    test_func(ptr_test);
+    cout<<*ptr_test<<endl;
+
+    int size_of_arr;
+    cin>>size_of_arr;
+
+    // creates dynamic array;
+    int *test_arr = new int[size_of_arr];
+
+    //only one integer with value 12
+    int *dynint = new int(12);
+
+
+    //deletes dynamic array
+    delete test_arr;
+    
+    return 0;
+}
+```
+<br />
+
+
+
 # **Задачи**
 
 ## **Направете функция, която:**
