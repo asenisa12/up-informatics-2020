@@ -63,6 +63,25 @@ int main()
     //deletes dynamic array
     delete test_arr;
     
+    //create dynamic 2d array
+    int rowCount = 5;
+    int **arr2d = new int*[rowCount];
+
+    int colCount = 6
+    for(int i =0; i < rowCount; i++)
+    {
+        arr2d[i] = new int[colCount];
+    }
+
+    //delete dynamic 2d array
+    for(int i =0; i < rowCount; i++)
+    {
+        delete [] arr2d[i];
+    }
+
+    delete  [] arr2d
+
+
     return 0;
 }
 ```

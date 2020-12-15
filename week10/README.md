@@ -2,7 +2,19 @@
 <br />
 <br />
 
+#### ** Дефиниране на символен низ**
+```cpp
+    #include <iostream>
+    using namespace std;
+    
+    int main(){
+        char str[] = "my first string!"; // == char str[] ={'m','y',' ', 'f',.....,'\0'};
 
+
+        return 0;
+    }
+
+```
 
 
 
