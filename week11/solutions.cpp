@@ -92,10 +92,55 @@ void remove_word_v2(char *&str, const char *word)
 
 
 
+void print_rec(const char *str)
+{
+    if(*str == '\0')
+        return;
 
+    cout<<*str<<endl;
+    print_rec(str+1);
+}
+
+
+
+void copy_rec(const char *str1, char *& str_cpy, int cnt)
+{
+    if(cnt == 0)
+    {
+        str_cpy = new char[strlen(str1) + 1];
+    }
+    str_cpy[cnt] = str1[cnt];
+
+    if(str1[cnt] != '\0')
+        copy_rec(str1, str_cpy, cnt + 1);
+
+}
+
+
+bool helper(const char * str1, int str1_len, const char *str2, int str2_len)
+{
+    cout<<str1<<"   "<<str2<<endl;
+
+    if(str1_len < str2_len)
+        return false;
+    else if(strncmp(str1,str2, str2_len) == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return helper(str1+1, str1_len - 1, str2, str2_len);
+    }
+}
+
+bool str_in_rec(const char * str1, const char *str2)
+{
+    return helper(str1, strlen(str1), str2, strlen(str2));
+}
 int main()
 {
 
+    /*
     char *str = to_str(12347845);
     cout<<str<<endl;
 
@@ -115,6 +160,22 @@ int main()
 
     char str2[]="alabalaanitsa";
     remove_word_v1(str2,"ala");
-    cout<<str2<<endl;
+    cout<<str2<<endl;*/
+
+
+    char str_0[] = "abcde123";
+    char *str_ptr = str_0;
+    //cout<<*(str_ptr + 1) << str_ptr[3]<<endl;
+
+    //print_rec(str_ptr);
+
+    char *str_cpy;
+    copy_rec(str_0, str_cpy, 0);
+
+    //print_rec(str_cpy);
+
+    char str_123[] = "123";
+
+    cout<<str_in_rec(str_0, str_123)<<endl;
     return 0;
 }
